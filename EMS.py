@@ -75,19 +75,22 @@ def search_employee():
 
     try:
         user_search=input("Please Enter Employee ID:")
-
-            
+        list_empid=[]   
         for keys in user_info:
             for user_data_keys,user_data_values in keys.items():
+                list_empid+=[str(user_data_keys)]
 
-                if user_search in str(user_data_keys):
-                    print("\n Emp_id:",user_data_keys,"\n")
+            if str(user_search) in list_empid:
+                print("\n Emp_id:",user_data_keys,"\n")
 
-                    for headings,heading_values in user_data_values.items():
-                        print(f'{headings} : {heading_values}')
+                for headings,heading_values in user_data_values.items():
+                    print(f'{headings} : {heading_values}')
+
+            else:
+                print(f'Employee with Emp ID:{user_search} is not found')
                     
-    except Exception as not_found:
-        print(f'Employee with Emp_id:{user_search} is not Found!')
+    except Exception as error:
+        print('something went wrong')
 
 
 n=True
