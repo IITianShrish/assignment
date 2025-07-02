@@ -50,7 +50,7 @@ def add_employee():
             for user_data_keys,user_data_values in keys.items():
 
                 if emp_id in str(user_data_keys):
-                    print("\n Emp_id:",user_data_keys,"\n")
+                    print("\nEmp_id:",user_data_keys,"\n")
 
                     for headings,heading_values in user_data_values.items():
                         print(f'{headings} : {heading_values}')
@@ -72,27 +72,41 @@ def view_employees():
 
 def search_employee():
     print("Processing to Search for Employees:")
+    req=[]
+    for keys in user_info:
+        emp_id_list=keys.keys()
 
-    try:
-        user_search=input("Please Enter Employee ID:")
-        list_empid=[]   
+        for i in emp_id_list:
+            req+=[i]
+
+
+
+
+
+    search_employee_eid=input('Enter emp_id:')
+    print(30*"-")
+
+    if req.count(int(search_employee_eid))!=0:
+        print(f'Yes,Employee with Emp_ID:{search_employee_eid} is there')
         for keys in user_info:
             for user_data_keys,user_data_values in keys.items():
-                list_empid+=[str(user_data_keys)]
+                if user_data_keys==int(search_employee_eid):
+                    print(30*"-")
+                    print("\nEmp_id:",user_data_keys,"\n")
 
-            if str(user_search) in list_empid:
-                print("\n Emp_id:",user_data_keys,"\n")
+                    for headings,heading_values in user_data_values.items():
+                        print(f'{headings} : {heading_values}')
 
-                for headings,heading_values in user_data_values.items():
-                    print(f'{headings} : {heading_values}')
-
-            else:
-                print(f'Employee with Emp ID:{user_search} is not found')
-                    
-    except Exception as error:
-        print('something went wrong')
+            print(30*"-")
 
 
+    else:
+        print(f'Employee Not Found!')        
+    
+
+
+
+    
 n=True
 
 while n:
